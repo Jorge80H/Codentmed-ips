@@ -90,8 +90,7 @@ interface Schema {
 }
 
 // Initialize InstantDB
-// IMPORTANT: Replace with your actual InstantDB app ID
-const APP_ID = process.env.NEXT_PUBLIC_INSTANTDB_APP_ID || 'YOUR_APP_ID_HERE'
+const APP_ID = process.env.NEXT_PUBLIC_INSTANT_APP_ID || '2935a123-9c03-4e77-8072-d370920ae7fc'
 
 export const db = init<Schema>({ appId: APP_ID })
 
