@@ -1,19 +1,14 @@
 # Netlify Build Configuration
 [build]
-  command = "npm run build"
+  command = "npm ci && npm run build"
   publish = ".next"
 
 [build.environment]
   NODE_VERSION = "18.20.8"
   NEXT_TELEMETRY_DISABLED = "1"
 
-# Context-specific settings
-[context.production]
-  [context.production.environment]
-    NODE_ENV = "production"
-
 [context.deploy-preview]
-  command = "npm run build"
+  command = "npm ci && npm run build"
 
 # Headers for security and performance
 [[headers]]
