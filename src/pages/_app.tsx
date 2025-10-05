@@ -4,7 +4,8 @@ import Head from 'next/head'
 import { Inter } from 'next/font/google'
 import { useRouter } from 'next/router'
 import { generateHreflangLinks } from '@/lib/i18n'
-import '@/app/globals.css'
+import nextI18NextConfig from '../../next-i18next.config'
+import '@/styles/globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,7 +18,7 @@ function App({ Component, pageProps }: AppProps) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
-        
+
         {/* Hreflang tags for SEO */}
         {hreflangLinks.map((link, index) => (
           <link
@@ -27,7 +28,7 @@ function App({ Component, pageProps }: AppProps) {
             href={link.href}
           />
         ))}
-        
+
         {/* Preload critical fonts */}
         <link
           rel="preload"
@@ -35,7 +36,7 @@ function App({ Component, pageProps }: AppProps) {
           as="style"
         />
       </Head>
-      
+
       <div className={inter.className}>
         <Component {...pageProps} />
       </div>
@@ -43,4 +44,4 @@ function App({ Component, pageProps }: AppProps) {
   )
 }
 
-export default appWithTranslation(App)
+export default appWithTranslation(App, nextI18NextConfig)

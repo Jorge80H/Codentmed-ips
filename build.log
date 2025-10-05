@@ -1,0 +1,25 @@
+
+> codentmed-ips@0.1.0 build
+> next build
+
+   Linting and checking validity of types ...
+ ⨯ ESLint: Failed to load config "next/core-web-vitals" to extend from. Referenced from: M:\EMPLEADOS DIGITALES\CLIENTES\CODENMED_IPS\CODENTMED_IPS_COM\.eslintrc.json
+Failed to compile.
+
+./src/components/HeroCarousel.tsx:33:50
+Type error: Argument of type '{ heroSlides: { $: { where: { isActive: true; }; order: { order: "asc"; }; }; }; }' is not assignable to parameter of type 'Exactly<Query, { heroSlides: { $: { where: { isActive: true; }; order: { order: "asc"; }; }; }; }>'.
+  Type '{ heroSlides: { $: { where: { isActive: true; }; order: { order: "asc"; }; }; }; }' is not assignable to type 'Query'.
+    Property 'heroSlides' is incompatible with index signature.
+      Type '{ $: { where: { isActive: true; }; order: { order: "asc"; }; }; }' is not assignable to type 'NamespaceVal'.
+        Type '{ $: { where: { isActive: true; }; order: { order: "asc"; }; }; }' is not assignable to type '$Option & Subquery'.
+          Type '{ $: { where: { isActive: true; }; order: { order: "asc"; }; }; }' is not assignable to type '$Option'.
+            The types of '$.order' are incompatible between these types.
+              Property 'serverCreatedAt' is missing in type '{ order: "asc"; }' but required in type 'Order'.
+
+[0m [90m 31 |[39m[0m
+[0m [90m 32 |[39m   [90m// Query active slides from InstantDB[39m[0m
+[0m[31m[1m>[22m[39m[90m 33 |[39m   [36mconst[39m { data[33m,[39m isLoading[33m,[39m error } [33m=[39m db[33m.[39museQuery({[0m
+[0m [90m    |[39m                                                  [31m[1m^[22m[39m[0m
+[0m [90m 34 |[39m     heroSlides[33m:[39m {[0m
+[0m [90m 35 |[39m       $[33m:[39m {[0m
+[0m [90m 36 |[39m         where[33m:[39m { isActive[33m:[39m [36mtrue[39m }[33m,[39m[0m

@@ -34,7 +34,7 @@ export default function HeroCarousel() {
     heroSlides: {
       $: {
         where: { isActive: true },
-        order: { order: 'asc' as const }
+        order: { serverCreatedAt: 'asc' as const }
       }
     }
   })

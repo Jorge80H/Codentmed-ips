@@ -44,7 +44,7 @@ export default function BlogList({ limit, categoryId, showFilters = true }: Blog
           status: 'published',
           ...(selectedCategory && { categoryId: selectedCategory })
         },
-        order: { publishedAt: 'desc' as const },
+        order: { serverCreatedAt: 'desc' as const },
         ...(limit && { limit })
       }
     },
@@ -112,7 +112,7 @@ export default function BlogList({ limit, categoryId, showFilters = true }: Blog
               </h3>
               <div className="flex flex-wrap gap-2">
                 <Badge
-                  variant={!selectedCategory ? 'primary' : 'secondary'}
+                  variant={!selectedCategory ? 'default' : 'secondary'}
                   className="cursor-pointer"
                   onClick={() => setSelectedCategory(null)}
                 >
@@ -121,7 +121,7 @@ export default function BlogList({ limit, categoryId, showFilters = true }: Blog
                 {categories.map((category) => (
                   <Badge
                     key={category.id}
-                    variant={selectedCategory === category.id ? 'primary' : 'secondary'}
+                    variant={selectedCategory === category.id ? 'default' : 'secondary'}
                     className="cursor-pointer"
                     onClick={() => setSelectedCategory(category.id)}
                   >
@@ -140,7 +140,7 @@ export default function BlogList({ limit, categoryId, showFilters = true }: Blog
               </h3>
               <div className="flex flex-wrap gap-2">
                 <Badge
-                  variant={!selectedTag ? 'primary' : 'secondary'}
+                  variant={!selectedTag ? 'default' : 'secondary'}
                   className="cursor-pointer"
                   onClick={() => setSelectedTag(null)}
                 >
@@ -149,7 +149,7 @@ export default function BlogList({ limit, categoryId, showFilters = true }: Blog
                 {allTags.map((tag) => (
                   <Badge
                     key={tag}
-                    variant={selectedTag === tag ? 'primary' : 'secondary'}
+                    variant={selectedTag === tag ? 'default' : 'secondary'}
                     className="cursor-pointer"
                     onClick={() => setSelectedTag(tag)}
                   >
@@ -197,7 +197,7 @@ export default function BlogList({ limit, categoryId, showFilters = true }: Blog
                   <div className="p-6 space-y-3">
                     {/* Category */}
                     {category && (
-                      <Badge variant="primary" size="sm">
+                      <Badge variant="default">
                         {locale === 'es' ? category.name_es : category.name_en}
                       </Badge>
                     )}
