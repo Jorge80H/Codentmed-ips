@@ -154,9 +154,9 @@ function Footer() {
               {locale === 'es' ? 'Enlaces Rápidos' : 'Quick Links'}
             </h4>
             <ul className="space-y-2 text-sm text-gray-300">
-              <li><a href="/para-patrocinadores" className="hover:text-white transition-colors">{t('navigation.for_sponsors')}</a></li>
-              <li><a href="/para-pacientes" className="hover:text-white transition-colors">{t('navigation.for_patients')}</a></li>
-              <li><a href="/nosotros" className="hover:text-white transition-colors">{t('navigation.about')}</a></li>
+              <li><a href="/servicios/para-patrocinadores" className="hover:text-white transition-colors">{t('navigation.for_sponsors')}</a></li>
+              <li><a href="/pacientes/informacion" className="hover:text-white transition-colors">{t('navigation.for_patients')}</a></li>
+              <li><a href="/nosotros/quienes-somos" className="hover:text-white transition-colors">{t('navigation.about')}</a></li>
               <li><a href="/blog" className="hover:text-white transition-colors">{t('navigation.blog')}</a></li>
               <li><a href="/contacto" className="hover:text-white transition-colors">{t('navigation.contact')}</a></li>
             </ul>

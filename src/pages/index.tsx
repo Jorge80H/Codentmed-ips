@@ -43,41 +43,49 @@ export default function HomePage() {
         <Navigation />
 
         {/* Hero Section */}
-        <header className="relative overflow-hidden bg-primary-600">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary-600 to-primary-500"></div>
-          <div className="relative container-max section-padding">
+        <header className="relative overflow-hidden bg-gradient-to-br from-primary-700 via-primary-600 to-primary-500">
+          {/* Background pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0" style={{
+              backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")'
+            }}></div>
+          </div>
+
+          <div className="relative container-max py-20 md:py-32">
             <div className="text-center">
-              {/* Logo placeholder */}
+              {/* Logo with medical icon */}
               <div className="mb-8 flex justify-center">
-                <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-lg">
-                  <span className="text-primary-600 font-bold text-xl">LOGO</span>
+                <div className="w-32 h-32 bg-white rounded-2xl flex items-center justify-center shadow-2xl border-4 border-primary-200 transform hover:scale-105 transition-transform duration-300">
+                  <svg className="w-20 h-20 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
                 </div>
               </div>
-              
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+
+              <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 drop-shadow-lg">
                 {t('site.title')}
               </h1>
-              
-              <p className="text-xl md:text-2xl text-primary-100 mb-4 max-w-4xl mx-auto">
+
+              <p className="text-xl md:text-3xl text-white font-light mb-4 max-w-4xl mx-auto leading-relaxed">
                 {t('site.subtitle')}
               </p>
-              
-              <p className="text-lg text-primary-50 mb-8 max-w-2xl mx-auto">
+
+              <p className="text-lg md:text-xl text-primary-50 mb-12 max-w-2xl mx-auto font-medium">
                 {t('site.tagline')}
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
-                  href="/para-patrocinadores"
-                  className="btn-primary bg-white text-primary-600 hover:bg-gray-50 inline-flex items-center justify-center"
+                  href="/servicios/para-patrocinadores"
+                  className="bg-white text-primary-600 hover:bg-gray-50 px-8 py-4 rounded-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 inline-flex items-center justify-center transform hover:-translate-y-1"
                 >
                   {t('navigation.for_sponsors')}
                   <ArrowRightIcon className="ml-2 h-5 w-5" />
                 </Link>
-                
+
                 <Link
-                  href="/para-pacientes"
-                  className="btn-secondary border-white text-white hover:bg-primary-700 inline-flex items-center justify-center"
+                  href="/pacientes/informacion"
+                  className="bg-primary-800 border-2 border-white text-white hover:bg-primary-900 px-8 py-4 rounded-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 inline-flex items-center justify-center transform hover:-translate-y-1"
                 >
                   {t('navigation.for_patients')}
                   <ArrowRightIcon className="ml-2 h-5 w-5" />
@@ -85,9 +93,13 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          
-          {/* Decorative elements */}
-          <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent"></div>
+
+          {/* Decorative wave */}
+          <div className="absolute bottom-0 left-0 w-full">
+            <svg className="w-full h-16 md:h-24 text-white" preserveAspectRatio="none" viewBox="0 0 1440 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 24C240 72 480 72 720 24C960 -24 1200 -24 1440 24V74H0V24Z" fill="currentColor"/>
+            </svg>
+          </div>
         </header>
         
         {/* Services Section */}
