@@ -1,0 +1,122 @@
+{
+  "site": {
+    "title": "CODENTMED IPS",
+    "subtitle": "Integrated Center for Medicine, Dentistry and Clinical Research",
+    "tagline": "Comprehensive care with scientific vision",
+    "description": "Leading center in clinical research, internal medicine, rheumatology and specialized dentistry in Colombia.",
+    "footer_tagline": "An IPS to care for you through science and humanity"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About Us",
+    "who_we_are": "Who We Are",
+    "our_team": "Our Team",
+    "certifications": "Certifications",
+    "services": "Services",
+    "for_sponsors": "For Sponsors",
+    "clinical_research": "Clinical Research",
+    "private_consultation": "Private Medical Consultation",
+    "regulatory_affairs": "Regulatory Affairs",
+    "research": "Research",
+    "active_studies": "Active Studies",
+    "therapeutic_areas": "Therapeutic Areas",
+    "publications": "Scientific Publications",
+    "patients": "Patients",
+    "patient_info": "Patient Information",
+    "available_studies": "Available Studies",
+    "rights_duties": "Rights and Duties",
+    "appointment_recommendations": "Appointment Recommendations",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "We offer comprehensive services in medicine, dentistry and clinical research",
+    "medicine": {
+      "title": "General and Specialized Medicine",
+      "description": "Internal medicine, rheumatology and interdisciplinary medical-dental follow-up."
+    },
+    "dentistry": {
+      "title": "Specialized Dentistry",
+      "description": "General dentistry, periodontics, oral rehabilitation and orthodontics with comprehensive approach."
+    },
+    "research": {
+      "title": "Clinical Research",
+      "description": "Clinical studies, documentary research and health economic evaluation."
+    },
+    "education": {
+      "title": "Medical Education",
+      "description": "Specialized courses, continuing education programs and research training."
+    },
+    "consultation": {
+      "title": "Dr. Wilson Private Consultation",
+      "description": "Specialized consultation with Dr. Wilson Bautista, authority in rheumatology."
+    },
+    "advisory": {
+      "title": "Institutional Advisory",
+      "description": "Advisory services for institutions and independent professionals in research."
+    }
+  },
+  "buttons": {
+    "learn_more": "Learn more",
+    "contact_now": "Contact Now",
+    "get_started": "Ready to get started?",
+    "read_more": "Read more",
+    "apply_now": "Apply Now",
+    "schedule_consultation": "Schedule Consultation"
+  },
+  "forms": {
+    "name": "Full name",
+    "email": "Email address",
+    "phone": "Phone",
+    "country": "Country",
+    "company": "Company",
+    "message": "Message",
+    "submit": "Submit",
+    "required": "Required field",
+    "invalid_email": "Invalid email",
+    "success": "Message sent successfully!",
+    "error": "Error sending message. Please try again."
+  },
+  "sponsors": {
+    "title": "For Sponsors",
+    "subtitle": "Strategic partners in clinical research",
+    "description": "Colombia as a strategic hub for international clinical research",
+    "advantages": {
+      "title": "Competitive Advantages",
+      "cost": "Competitive international costs",
+      "quality": "GCP standards and INVIMA regulatory",
+      "talent": "Specialized medical talent",
+      "location": "Strategic location in Latin America"
+    },
+    "therapeutic_areas": "Therapeutic Areas",
+    "contact_cta": "Schedule business meeting"
+  },
+  "patients": {
+    "title": "For Patients",
+    "subtitle": "Participate in clinical studies and access innovative treatments",
+    "what_is_clinical_study": "What is a clinical study?",
+    "study_description": "Clinical studies safely and controlled evaluate new medical treatments.",
+    "active_studies": "Active Studies",
+    "participation_benefits": "Participation Benefits",
+    "apply_study": "Apply to Study"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We are here to answer your questions",
+    "office_hours": "Office Hours",
+    "address": "Address",
+    "international_attention": "International Service",
+    "multiple_timezones": "Multiple time zones",
+    "virtual_consultation": "Virtual consultation available"
+  },
+  "cta": {
+    "ready_to_start": "Ready to get started?",
+    "contact_description": "Contact us to learn more about our services and how we can help you.",
+    "schedule_appointment": "Schedule Appointment"
+  },
+  "meta": {
+    "home_title": "CODENTMED IPS - Integrated Center for Medicine, Dentistry and Research",
+    "home_description": "Leading center in clinical research, internal medicine, rheumatology and specialized dentistry in Colombia. Comprehensive care with scientific vision."
+  }
+}

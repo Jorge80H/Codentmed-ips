@@ -1,0 +1,160 @@
+# Netlify Build Configuration
+[build]
+  command = "npm run build"
+  publish = ".next"
+  
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
+  NEXT_TELEMETRY_DISABLED = "1"
+
+# Context-specific settings
+[context.production]
+  [context.production.environment]
+    NODE_ENV = "production"
+
+[context.deploy-preview]
+  command = "npm run build"
+
+# Headers for security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Security headers
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    
+    # Performance headers
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Static assets caching
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# HTML caching
+[[headers]]
+  for = "*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Language detection and redirects
+[[redirects]]
+  from = "/"
+  to = "/es/"
+  status = 302
+  conditions = {Language = ["es"], Country = ["CO", "VE", "EC", "PE", "AR", "MX"]}
+
+[[redirects]]
+  from = "/"
+  to = "/en/"
+  status = 302
+  conditions = {Language = ["en"]}
+
+# Default redirect to Spanish
+[[redirects]]
+  from = "/"
+  to = "/es/"
+  status = 302
+
+# Cross-domain integration with Dr. Wilson Bautista
+[[redirects]]
+  from = "/dr-wilson"
+  to = "https://drwilsonbautista.com"
+  status = 301
+
+[[redirects]]
+  from = "/dr-wilson/*"
+  to = "https://drwilsonbautista.com/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/consulta-privada"
+  to = "https://drwilsonbautista.com/consulta"
+  status = 301
+
+# SEO redirects for old URLs (if migrating from existing site)
+[[redirects]]
+  from = "/about"
+  to = "/es/nosotros"
+  status = 301
+
+[[redirects]]
+  from = "/services"
+  to = "/es/servicios"
+  status = 301
+
+[[redirects]]
+  from = "/contact"
+  to = "/es/contacto"
+  status = 301
+
+# Form handling
+[[redirects]]
+  from = "/api/forms/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+# 404 handling with language support
+[[redirects]]
+  from = "/es/*"
+  to = "/es/404.html"
+  status = 404
+
+[[redirects]]
+  from = "/en/*"
+  to = "/en/404.html"
+  status = 404
+
+[[redirects]]
+  from = "/*"
+  to = "/es/404.html"
+  status = 404
+
+# Edge Functions (for future use)
+[[edge_functions]]
+  function = "geolocation"
+  path = "/api/geo"
+
+# Plugin configuration
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[[plugins]]
+  package = "netlify-plugin-submit-sitemap"
+  [plugins.inputs]
+    baseUrl = "https://codentmed-ips.netlify.app"
+    sitemapPath = "/sitemap.xml"
+    providers = [
+      "google",
+      "bing"
+    ]
+
+# Functions configuration
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Performance optimizations
+[build.processing]
+  skip_processing = false
+  
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
+
+[build.processing.html]
+  pretty_urls = true

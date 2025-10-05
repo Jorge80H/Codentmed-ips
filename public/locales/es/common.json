@@ -1,0 +1,122 @@
+{
+  "site": {
+    "title": "CODENTMED IPS",
+    "subtitle": "Centro Integrado de Medicina, Odontología e Investigación Clínica",
+    "tagline": "Atención integral con visión científica",
+    "description": "Centro líder en investigación clínica, medicina interna, reumatología y odontología especializada en Colombia.",
+    "footer_tagline": "Una IPS para cuidarte desde la ciencia y la humanidad"
+  },
+  "navigation": {
+    "home": "Inicio",
+    "about": "Nosotros",
+    "who_we_are": "Quiénes Somos",
+    "our_team": "Nuestro Equipo",
+    "certifications": "Certificaciones",
+    "services": "Servicios",
+    "for_sponsors": "Para Patrocinadores",
+    "clinical_research": "Investigación Clínica",
+    "private_consultation": "Consulta Médica Privada",
+    "regulatory_affairs": "Asuntos Regulatorios",
+    "research": "Investigación",
+    "active_studies": "Estudios Activos",
+    "therapeutic_areas": "Áreas Terapéuticas",
+    "publications": "Publicaciones Científicas",
+    "patients": "Pacientes",
+    "patient_info": "Información para Pacientes",
+    "available_studies": "Estudios Disponibles",
+    "rights_duties": "Derechos y Deberes",
+    "appointment_recommendations": "Recomendaciones para tu Cita",
+    "blog": "Blog",
+    "contact": "Contacto"
+  },
+  "cta": {
+    "ready_to_start": "¿Listo para comenzar?",
+    "contact_description": "Contáctanos para conocer más sobre nuestros servicios y cómo podemos ayudarte.",
+    "schedule_appointment": "Agenda tu Cita"
+  },
+  "services": {
+    "title": "Nuestros Servicios",
+    "subtitle": "Ofrecemos servicios integrales en medicina, odontología e investigación clínica",
+    "medicine": {
+      "title": "Medicina General y Especializada",
+      "description": "Medicina interna, reumatología y seguimiento interdisciplinario médico-odontológico."
+    },
+    "dentistry": {
+      "title": "Odontología Especializada", 
+      "description": "Odontología general, periodoncia, rehabilitación oral y ortodoncia con enfoque integral."
+    },
+    "research": {
+      "title": "Investigación Clínica",
+      "description": "Estudios clínicos, investigación documental y evaluación económica en salud."
+    },
+    "education": {
+      "title": "Educación Médica",
+      "description": "Cursos especializados, programas de actualización y formación en investigación."
+    },
+    "consultation": {
+      "title": "Consulta Privada Dr. Wilson",
+      "description": "Consulta especializada con el Dr. Wilson Bautista, autoridad en reumatología."
+    },
+    "advisory": {
+      "title": "Asesorías Institucionales",
+      "description": "Asesorías para instituciones y profesionales independientes en investigación."
+    }
+  },
+  "buttons": {
+    "learn_more": "Ver más",
+    "contact_now": "Contactar Ahora",
+    "get_started": "¿Listo para comenzar?",
+    "read_more": "Leer más",
+    "apply_now": "Aplicar Ahora",
+    "schedule_consultation": "Agendar Consulta"
+  },
+  "forms": {
+    "name": "Nombre completo",
+    "email": "Correo electrónico",
+    "phone": "Teléfono",
+    "country": "País",
+    "company": "Empresa",
+    "message": "Mensaje",
+    "submit": "Enviar",
+    "required": "Campo requerido",
+    "invalid_email": "Email inválido",
+    "success": "¡Mensaje enviado exitosamente!",
+    "error": "Error al enviar el mensaje. Intenta de nuevo."
+  },
+  "sponsors": {
+    "title": "Para Patrocinadores",
+    "subtitle": "Socios estratégicos en investigación clínica",
+    "description": "Colombia como hub estratégico para investigación clínica internacional",
+    "advantages": {
+      "title": "Ventajas Competitivas",
+      "cost": "Costos competitivos internacionales",
+      "quality": "Estándares GCP y regulatorios INVIMA",
+      "talent": "Talento médico especializado",
+      "location": "Ubicación estratégica en Latinoamérica"
+    },
+    "therapeutic_areas": "Áreas Terapéuticas",
+    "contact_cta": "Agendar reunión comercial"
+  },
+  "patients": {
+    "title": "Para Pacientes",
+    "subtitle": "Participa en estudios clínicos y accede a tratamientos innovadores",
+    "what_is_clinical_study": "¿Qué es un estudio clínico?",
+    "study_description": "Los estudios clínicos evalúan nuevos tratamientos médicos de forma segura y controlada.",
+    "active_studies": "Estudios Activos",
+    "participation_benefits": "Beneficios de Participar",
+    "apply_study": "Postular a Estudio"
+  },
+  "contact": {
+    "title": "Contáctanos",
+    "subtitle": "Estamos aquí para responder tus preguntas",
+    "office_hours": "Horarios de Atención",
+    "address": "Dirección",
+    "international_attention": "Atención Internacional",
+    "multiple_timezones": "Múltiples zonas horarias",
+    "virtual_consultation": "Consulta virtual disponible"
+  },
+  "meta": {
+    "home_title": "CODENTMED IPS - Centro Integrado de Medicina, Odontología e Investigación",
+    "home_description": "Centro líder en investigación clínica, medicina interna, reumatología y odontología especializada en Colombia. Atención integral con visión científica."
+  }
+}
