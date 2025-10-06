@@ -1,4 +1,4 @@
-# Propuesta y Requerimientos: Sitio Web Corporativo CODENMED IPS
+# Propuesta y Requerimientos: Sitio Web Corporativo CODENTMED IPS
 
 **Documento Versión:** 1.1
 **Fecha:** 1 de Septiembre de 2025
