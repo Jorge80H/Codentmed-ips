@@ -1,20 +1,20 @@
 import type { GetStaticProps, GetStaticPaths } from 'next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Head from 'next/head'
 import Link from 'next/link'
-import { 
-  HeartIcon,
-  AcademicCapIcon,
-  BeakerIcon,
-  UserGroupIcon,
-  ClockIcon,
-  CheckCircleIcon,
-  ArrowRightIcon,
-  PhoneIcon,
-  CalendarDaysIcon
-} from '@heroicons/react/24/outline'
-import { useCustomTranslation } from '@/lib/i18n'
-import Navigation from '@/components/Navigation'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { Button } from '@/components/ui/Button'
+import {
+  Heart,
+  GraduationCap,
+  Microscope,
+  Users,
+  CheckCircle,
+  ArrowRight,
+  Phone,
+  Calendar,
+  Activity,
+  FileText
+} from 'lucide-react'
 
 interface ServicePageProps {
   slug: string
@@ -22,124 +22,198 @@ interface ServicePageProps {
 
 const serviceData = {
   medicina: {
-    title: 'Medicina General y Especializada',
-    subtitle: 'Atención médica integral con enfoque interdisciplinario',
-    description: 'Servicios médicos especializados en medicina interna y reumatología con seguimiento médico-odontológico integrado.',
-    icon: HeartIcon,
-    color: 'bg-red-600',
-    specialties: [
+    titleEs: 'Medicina General y Especializada',
+    titleEn: 'General and Specialized Medicine',
+    subtitleEs: 'Atención médica integral con enfoque interdisciplinario',
+    subtitleEn: 'Comprehensive medical care with interdisciplinary approach',
+    descriptionEs: 'Servicios médicos especializados en medicina general, medicina interna y reumatología con seguimiento médico-odontológico integrado.',
+    descriptionEn: 'Specialized medical services in general medicine, internal medicine and rheumatology with integrated medical-dental follow-up.',
+    icon: Heart,
+    specialtiesEs: [
+      'Medicina General',
       'Medicina Interna',
-      'Reumatología', 
-      'Cardiología',
-      'Endocrinología',
-      'Gastroenterología',
-      'Seguimiento Interdisciplinario'
+      'Reumatología',
+      'Seguimiento Interdisciplinario Médico-Odontológico'
     ],
-    features: [
+    specialtiesEn: [
+      'General Medicine',
+      'Internal Medicine',
+      'Rheumatology',
+      'Interdisciplinary Medical-Dental Follow-up'
+    ],
+    featuresEs: [
       'Consulta médica especializada',
       'Diagnóstico integral',
       'Planes de tratamiento personalizados',
       'Seguimiento médico continuo',
       'Coordinación médico-odontológica',
-      'Telemedicina disponible'
+      'Atención basada en evidencia científica'
+    ],
+    featuresEn: [
+      'Specialized medical consultation',
+      'Comprehensive diagnosis',
+      'Personalized treatment plans',
+      'Continuous medical follow-up',
+      'Medical-dental coordination',
+      'Evidence-based care'
     ]
   },
   odontologia: {
-    title: 'Odontología Especializada',
-    subtitle: 'Cuidado oral integral con tecnología avanzada',
-    description: 'Servicios odontológicos especializados con enfoque preventivo y rehabilitador, integrados con seguimiento médico.',
-    icon: UserGroupIcon,
-    color: 'bg-blue-600',
-    specialties: [
-      'Odontología General',
+    titleEs: 'Odontología General y Especializada',
+    titleEn: 'General and Specialized Dentistry',
+    subtitleEs: 'Cuidado oral integral con tecnología avanzada',
+    subtitleEn: 'Comprehensive oral care with advanced technology',
+    descriptionEs: 'Servicios odontológicos especializados incluyendo odontología general y preventiva, periodoncia, rehabilitación oral, ortodoncia, cirugía oral y seguimiento interdisciplinario.',
+    descriptionEn: 'Specialized dental services including general and preventive dentistry, periodontics, oral rehabilitation, orthodontics, oral surgery and interdisciplinary follow-up.',
+    icon: Activity,
+    specialtiesEs: [
+      'Odontología General y Preventiva',
       'Periodoncia',
       'Rehabilitación Oral',
       'Ortodoncia',
-      'Endodoncia',
-      'Cirugía Oral'
+      'Cirugía Oral',
+      'Seguimiento Interdisciplinario'
     ],
-    features: [
+    specialtiesEn: [
+      'General and Preventive Dentistry',
+      'Periodontics',
+      'Oral Rehabilitation',
+      'Orthodontics',
+      'Oral Surgery',
+      'Interdisciplinary Follow-up'
+    ],
+    featuresEs: [
       'Evaluación odontológica integral',
       'Tratamientos especializados',
       'Tecnología de última generación',
       'Enfoque preventivo',
       'Rehabilitación completa',
       'Seguimiento post-tratamiento'
+    ],
+    featuresEn: [
+      'Comprehensive dental evaluation',
+      'Specialized treatments',
+      'State-of-the-art technology',
+      'Preventive approach',
+      'Complete rehabilitation',
+      'Post-treatment follow-up'
     ]
   },
   investigacion: {
-    title: 'Investigación Clínica',
-    subtitle: 'Centro líder en estudios clínicos internacionales',
-    description: 'Investigación clínica de alta calidad con estándares internacionales GCP para el desarrollo de nuevos tratamientos.',
-    icon: BeakerIcon,
-    color: 'bg-purple-600',
-    specialties: [
-      'Estudios Clínicos Fase I-IV',
-      'Investigación Documental',
+    titleEs: 'Investigación Clínica y Documental',
+    titleEn: 'Clinical and Documentary Research',
+    subtitleEs: 'Investigación de excelencia con estándares internacionales',
+    subtitleEn: 'Excellence in research with international standards',
+    descriptionEs: 'Investigación clínica en medicina y odontología, evaluación de materiales odontológicos, evaluación económica en salud e investigación documental y académica.',
+    descriptionEn: 'Clinical research in medicine and dentistry, dental materials evaluation, health economic evaluation and documentary and academic research.',
+    icon: Microscope,
+    specialtiesEs: [
+      'Investigación Clínica en Medicina y Odontología',
+      'Evaluación de Materiales Odontológicos',
       'Evaluación Económica en Salud',
-      'Farmacovigilancia',
-      'Bioestadística',
-      'Asuntos Regulatorios'
+      'Investigación Documental y Académica'
     ],
-    features: [
-      'Estándares GCP internacionales',
-      'Equipo médico especializado',
-      'Infraestructura tecnológica avanzada',
-      'Supervisión ética rigurosa',
-      'Reportes de calidad',
-      'Soporte regulatorio INVIMA'
+    specialtiesEn: [
+      'Clinical Research in Medicine and Dentistry',
+      'Dental Materials Evaluation',
+      'Health Economic Evaluation',
+      'Documentary and Academic Research'
+    ],
+    featuresEs: [
+      'Protocolos de investigación rigurosos',
+      'Equipo científico especializado',
+      'Publicaciones en revistas indexadas',
+      'Metodología científica robusta',
+      'Colaboración con instituciones internacionales',
+      'Supervisión ética rigurosa'
+    ],
+    featuresEn: [
+      'Rigorous research protocols',
+      'Specialized scientific team',
+      'Publications in indexed journals',
+      'Robust scientific methodology',
+      'Collaboration with international institutions',
+      'Rigorous ethical supervision'
     ]
   },
   educacion: {
-    title: 'Educación Médica',
-    subtitle: 'Formación médica continua y especializada',
-    description: 'Programas de educación médica, cursos especializados y formación en investigación clínica.',
-    icon: AcademicCapIcon,
-    color: 'bg-green-600',
-    specialties: [
-      'Cursos de Actualización Médica',
-      'Formación en Investigación Clínica',
-      'Educación Médica Continua',
-      'Programas de Capacitación',
-      'Seminarios Especializados',
-      'Talleres Prácticos'
+    titleEs: 'Educación Médica y Odontológica',
+    titleEn: 'Medical and Dental Education',
+    subtitleEs: 'Formación continua de excelencia',
+    subtitleEn: 'Excellence in continuing education',
+    descriptionEs: 'Cursos y talleres especializados, formación en investigación, programas de actualización profesional y espacios de discusión científica.',
+    descriptionEn: 'Specialized courses and workshops, research training, professional development programs and scientific discussion spaces.',
+    icon: GraduationCap,
+    specialtiesEs: [
+      'Cursos y Talleres Especializados',
+      'Formación en Investigación',
+      'Programas de Actualización Profesional',
+      'Espacios de Discusión Científica'
     ],
-    features: [
+    specialtiesEn: [
+      'Specialized Courses and Workshops',
+      'Research Training',
+      'Professional Development Programs',
+      'Scientific Discussion Spaces'
+    ],
+    featuresEs: [
       'Docentes especializados',
       'Metodología actualizada',
       'Certificación profesional',
       'Modalidad presencial y virtual',
       'Material didáctico incluido',
       'Seguimiento personalizado'
+    ],
+    featuresEn: [
+      'Specialized instructors',
+      'Updated methodology',
+      'Professional certification',
+      'In-person and virtual modes',
+      'Included educational materials',
+      'Personalized follow-up'
     ]
   },
   asesorias: {
-    title: 'Asesorías Institucionales',
-    subtitle: 'Consultoría especializada en investigación y gestión médica',
-    description: 'Asesoría profesional para instituciones y profesionales independientes en investigación clínica y gestión médica.',
-    icon: UserGroupIcon,
-    color: 'bg-orange-600',
-    specialties: [
-      'Asesoría en Investigación Clínica',
-      'Consultoría Regulatoria',
-      'Gestión de Proyectos de Investigación',
-      'Capacitación Institucional',
-      'Auditorías de Calidad',
-      'Desarrollo de Protocolos'
+    titleEs: 'Asesorías Institucionales',
+    titleEn: 'Institutional Advisory',
+    subtitleEs: 'Consultoría especializada para instituciones y profesionales',
+    subtitleEn: 'Specialized consulting for institutions and professionals',
+    descriptionEs: 'Asesoría especializada para instituciones públicas y privadas, así como para profesionales independientes en el área de la salud.',
+    descriptionEn: 'Specialized advisory for public and private institutions, as well as independent health professionals.',
+    icon: FileText,
+    specialtiesEs: [
+      'Asesoría para Instituciones Públicas y Privadas',
+      'Asesoría para Profesionales Independientes',
+      'Consultoría en Investigación',
+      'Desarrollo de Proyectos de Salud'
     ],
-    features: [
+    specialtiesEn: [
+      'Advisory for Public and Private Institutions',
+      'Advisory for Independent Professionals',
+      'Research Consulting',
+      'Health Project Development'
+    ],
+    featuresEs: [
       'Experiencia comprobada',
       'Consultoría personalizada',
-      'Soporte regulatorio',
-      'Capacitación especializada',
+      'Soporte técnico especializado',
+      'Capacitación institucional',
       'Seguimiento de proyectos',
       'Garantía de calidad'
+    ],
+    featuresEn: [
+      'Proven experience',
+      'Personalized consulting',
+      'Specialized technical support',
+      'Institutional training',
+      'Project follow-up',
+      'Quality assurance'
     ]
   }
 }
 
 export default function ServicePage({ slug }: ServicePageProps) {
-  const { t, locale } = useCustomTranslation()
+  const { t } = useLanguage()
   const service = serviceData[slug as keyof typeof serviceData]
 
   if (!service) {
@@ -151,76 +225,65 @@ export default function ServicePage({ slug }: ServicePageProps) {
   return (
     <>
       <Head>
-        <title>{service.title} - {t('site.title')}</title>
-        <meta name="description" content={service.description} />
-        <meta property="og:title" content={`${service.title} - ${t('site.title')}`} />
-        <meta property="og:description" content={service.description} />
-        <meta property="og:locale" content={locale === 'es' ? 'es_CO' : 'en_US'} />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`${service.title} - ${t('site.title')}`} />
-        <meta name="twitter:description" content={service.description} />
+        <title>{t(service.titleEs, service.titleEn)} - CODENTMED IPS</title>
+        <meta name="description" content={t(service.descriptionEs, service.descriptionEn)} />
       </Head>
 
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-        <Navigation />
-
+      <div className="min-h-screen">
         {/* Hero Section */}
-        <header className={`relative overflow-hidden ${service.color}`}>
-          <div className="absolute inset-0 bg-black opacity-10"></div>
-          <div className="relative container-max section-padding">
+        <section className="relative bg-gradient-to-br from-primary/10 via-background to-primary/5 py-20 md:py-32">
+          <div className="max-w-7xl mx-auto px-6">
             <div className="max-w-4xl">
-              <div className="flex items-center mb-6">
-                <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4">
-                  <IconComponent className="h-8 w-8 text-white" />
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center">
+                  <IconComponent className="w-8 h-8 text-primary" />
                 </div>
                 <div>
-                  <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">
-                    {service.title}
+                  <h1 className="text-4xl md:text-5xl font-bold text-foreground">
+                    {t(service.titleEs, service.titleEn)}
                   </h1>
-                  <p className="text-xl text-white text-opacity-90">
-                    {service.subtitle}
+                  <p className="text-xl text-muted-foreground mt-2">
+                    {t(service.subtitleEs, service.subtitleEn)}
                   </p>
                 </div>
               </div>
-              <p className="text-lg text-white text-opacity-80 mb-8 max-w-2xl">
-                {service.description}
+              <p className="text-lg text-muted-foreground mb-8 max-w-2xl">
+                {t(service.descriptionEs, service.descriptionEn)}
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="/contacto"
-                  className="btn-primary bg-white text-gray-800 hover:bg-gray-50 inline-flex items-center justify-center"
-                >
-                  <PhoneIcon className="h-5 w-5 mr-2" />
-                  Contactar Ahora
-                </Link>
-                <Link
-                  href="/contacto"
-                  className="btn-secondary border-white text-white hover:bg-white hover:bg-opacity-10 inline-flex items-center justify-center"
-                >
-                  <CalendarDaysIcon className="h-5 w-5 mr-2" />
-                  Agendar Cita
-                </Link>
+              <div className="flex flex-wrap gap-4">
+                <Button size="lg" asChild>
+                  <Link href="/contacto">
+                    <Phone className="w-5 h-5 mr-2" />
+                    {t('Contactar Ahora', 'Contact Now')}
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" asChild>
+                  <Link href="/contacto/agendar-cita">
+                    <Calendar className="w-5 h-5 mr-2" />
+                    {t('Agendar Cita', 'Schedule Appointment')}
+                  </Link>
+                </Button>
               </div>
             </div>
           </div>
-          <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent"></div>
-        </header>
+        </section>
 
         {/* Service Features */}
-        <section className="section-padding">
-          <div className="container-max">
+        <section className="py-20">
+          <div className="max-w-7xl mx-auto px-6">
             <div className="grid lg:grid-cols-2 gap-12">
               {/* Features */}
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                  Características del Servicio
+                <h2 className="text-3xl font-bold text-foreground mb-6">
+                  {t('Características del Servicio', 'Service Features')}
                 </h2>
                 <div className="space-y-4">
-                  {service.features.map((feature, index) => (
-                    <div key={index} className="flex items-start">
-                      <CheckCircleIcon className={`h-6 w-6 ${service.color.replace('bg-', 'text-')} mr-3 flex-shrink-0 mt-0.5`} />
-                      <span className="text-gray-700">{feature}</span>
+                  {(service.featuresEs || []).map((featureEs, index) => (
+                    <div key={index} className="flex items-start gap-3">
+                      <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
+                      <span className="text-muted-foreground">
+                        {t(featureEs, service.featuresEn?.[index] || featureEs)}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -228,17 +291,17 @@ export default function ServicePage({ slug }: ServicePageProps) {
 
               {/* Specialties */}
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                  Especialidades
+                <h2 className="text-3xl font-bold text-foreground mb-6">
+                  {t('Especialidades', 'Specialties')}
                 </h2>
-                <div className="grid grid-cols-1 gap-4">
-                  {service.specialties.map((specialty, index) => (
-                    <div key={index} className="card">
-                      <div className="card-body p-4">
-                        <div className="flex items-center">
-                          <div className={`w-3 h-3 rounded-full ${service.color} mr-3 flex-shrink-0`}></div>
-                          <span className="font-medium text-gray-900">{specialty}</span>
-                        </div>
+                <div className="space-y-3">
+                  {(service.specialtiesEs || []).map((specialtyEs, index) => (
+                    <div key={index} className="p-4 bg-card rounded-lg border border-card-border">
+                      <div className="flex items-center gap-3">
+                        <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0"></div>
+                        <span className="font-medium text-card-foreground">
+                          {t(specialtyEs, service.specialtiesEn?.[index] || specialtyEs)}
+                        </span>
                       </div>
                     </div>
                   ))}
@@ -249,63 +312,63 @@ export default function ServicePage({ slug }: ServicePageProps) {
         </section>
 
         {/* Process Section */}
-        <section className="bg-gray-50 section-padding">
-          <div className="container-max">
+        <section className="bg-muted/30 py-20">
+          <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Nuestro Proceso
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                {t('Nuestro Proceso', 'Our Process')}
               </h2>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                Metodología probada para garantizar la excelencia en cada servicio
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                {t('Metodología probada para garantizar la excelencia en cada servicio', 'Proven methodology to ensure excellence in every service')}
               </p>
             </div>
 
             <div className="grid md:grid-cols-4 gap-8">
               <div className="text-center">
-                <div className={`w-16 h-16 ${service.color} text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold`}>
+                <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
                   1
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  Evaluación Inicial
+                <h3 className="text-lg font-semibold text-foreground mb-2">
+                  {t('Evaluación Inicial', 'Initial Evaluation')}
                 </h3>
-                <p className="text-gray-600 text-sm">
-                  Evaluación completa de sus necesidades y objetivos específicos.
+                <p className="text-muted-foreground text-sm">
+                  {t('Evaluación completa de sus necesidades y objetivos específicos.', 'Complete evaluation of your specific needs and objectives.')}
                 </p>
               </div>
 
               <div className="text-center">
-                <div className={`w-16 h-16 ${service.color} text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold`}>
+                <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
                   2
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  Planificación
+                <h3 className="text-lg font-semibold text-foreground mb-2">
+                  {t('Planificación', 'Planning')}
                 </h3>
-                <p className="text-gray-600 text-sm">
-                  Desarrollo de un plan personalizado con cronogramas claros.
+                <p className="text-muted-foreground text-sm">
+                  {t('Desarrollo de un plan personalizado con cronogramas claros.', 'Development of a personalized plan with clear timelines.')}
                 </p>
               </div>
 
               <div className="text-center">
-                <div className={`w-16 h-16 ${service.color} text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold`}>
+                <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
                   3
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  Ejecución
+                <h3 className="text-lg font-semibold text-foreground mb-2">
+                  {t('Ejecución', 'Execution')}
                 </h3>
-                <p className="text-gray-600 text-sm">
-                  Implementación del servicio con monitoreo continuo de calidad.
+                <p className="text-muted-foreground text-sm">
+                  {t('Implementación del servicio con monitoreo continuo de calidad.', 'Service implementation with continuous quality monitoring.')}
                 </p>
               </div>
 
               <div className="text-center">
-                <div className={`w-16 h-16 ${service.color} text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold`}>
+                <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
                   4
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  Seguimiento
+                <h3 className="text-lg font-semibold text-foreground mb-2">
+                  {t('Seguimiento', 'Follow-up')}
                 </h3>
-                <p className="text-gray-600 text-sm">
-                  Seguimiento post-servicio para garantizar resultados óptimos.
+                <p className="text-muted-foreground text-sm">
+                  {t('Seguimiento post-servicio para garantizar resultados óptimos.', 'Post-service follow-up to ensure optimal results.')}
                 </p>
               </div>
             </div>
@@ -313,72 +376,87 @@ export default function ServicePage({ slug }: ServicePageProps) {
         </section>
 
         {/* Why Choose Us */}
-        <section className="section-padding">
-          <div className="container-max">
+        <section className="py-20">
+          <div className="max-w-7xl mx-auto px-6">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                  ¿Por qué elegir CODENTMED IPS?
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+                  {t('¿Por qué elegir CODENTMED IPS?', 'Why choose CODENTMED IPS?')}
                 </h2>
                 <div className="space-y-6">
-                  <div className="flex items-start">
-                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                      <AcademicCapIcon className="h-6 w-6 text-blue-600" />
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <GraduationCap className="w-6 h-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">Experiencia Comprobada</h3>
-                      <p className="text-gray-600">Más de 10 años de experiencia en el sector médico y de investigación clínica.</p>
+                      <h3 className="text-lg font-semibold text-foreground mb-2">
+                        {t('Experiencia Comprobada', 'Proven Experience')}
+                      </h3>
+                      <p className="text-muted-foreground">
+                        {t('Años de experiencia en el sector médico, odontológico y de investigación clínica.', 'Years of experience in the medical, dental and clinical research sector.')}
+                      </p>
                     </div>
                   </div>
 
-                  <div className="flex items-start">
-                    <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                      <CheckCircleIcon className="h-6 w-6 text-green-600" />
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <CheckCircle className="w-6 h-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">Estándares Internacionales</h3>
-                      <p className="text-gray-600">Cumplimos con los más altos estándares de calidad y regulaciones internacionales.</p>
+                      <h3 className="text-lg font-semibold text-foreground mb-2">
+                        {t('Estándares de Excelencia', 'Standards of Excellence')}
+                      </h3>
+                      <p className="text-muted-foreground">
+                        {t('Cumplimos con los más altos estándares de calidad en todos nuestros servicios.', 'We comply with the highest quality standards in all our services.')}
+                      </p>
                     </div>
                   </div>
 
-                  <div className="flex items-start">
-                    <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                      <UserGroupIcon className="h-6 w-6 text-purple-600" />
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Users className="w-6 h-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">Equipo Especializado</h3>
-                      <p className="text-gray-600">Profesionales altamente calificados y en constante actualización científica.</p>
+                      <h3 className="text-lg font-semibold text-foreground mb-2">
+                        {t('Equipo Especializado', 'Specialized Team')}
+                      </h3>
+                      <p className="text-muted-foreground">
+                        {t('Profesionales altamente calificados y en constante actualización científica.', 'Highly qualified professionals in constant scientific updating.')}
+                      </p>
                     </div>
                   </div>
 
-                  <div className="flex items-start">
-                    <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                      <ClockIcon className="h-6 w-6 text-orange-600" />
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Heart className="w-6 h-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">Atención Personalizada</h3>
-                      <p className="text-gray-600">Cada paciente y proyecto recibe atención individualizada y seguimiento continuo.</p>
+                      <h3 className="text-lg font-semibold text-foreground mb-2">
+                        {t('Atención Personalizada', 'Personalized Care')}
+                      </h3>
+                      <p className="text-muted-foreground">
+                        {t('Cada paciente y proyecto recibe atención individualizada y seguimiento continuo.', 'Each patient and project receives individualized attention and continuous follow-up.')}
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-8 rounded-2xl">
+              <div className="bg-gradient-to-br from-primary/5 to-primary/10 p-8 rounded-2xl border border-primary/20">
                 <div className="text-center">
-                  <IconComponent className={`h-16 w-16 mx-auto mb-4 ${service.color.replace('bg-', 'text-')}`} />
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                    Solicitar Información
+                  <IconComponent className="w-16 h-16 mx-auto mb-4 text-primary" />
+                  <h3 className="text-2xl font-bold text-foreground mb-4">
+                    {t('Solicitar Información', 'Request Information')}
                   </h3>
-                  <p className="text-gray-600 mb-6">
-                    ¿Interesado en {service.title.toLowerCase()}? Contáctenos para más información personalizada.
+                  <p className="text-muted-foreground mb-6">
+                    {t('¿Interesado en este servicio? Contáctenos para más información personalizada.', 'Interested in this service? Contact us for more personalized information.')}
                   </p>
-                  <Link
-                    href="/contacto"
-                    className={`btn-primary ${service.color} hover:opacity-90 inline-flex items-center justify-center w-full`}
-                  >
-                    Contactar Especialista
-                    <ArrowRightIcon className="ml-2 h-5 w-5" />
-                  </Link>
+                  <Button size="lg" className="w-full" asChild>
+                    <Link href="/contacto">
+                      {t('Contactar Especialista', 'Contact Specialist')}
+                      <ArrowRight className="ml-2 w-5 h-5" />
+                    </Link>
+                  </Button>
                 </div>
               </div>
             </div>
@@ -386,14 +464,14 @@ export default function ServicePage({ slug }: ServicePageProps) {
         </section>
 
         {/* Related Services */}
-        <section className="bg-gray-50 section-padding">
-          <div className="container-max">
+        <section className="bg-muted/30 py-20">
+          <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Servicios Relacionados
+              <h2 className="text-3xl font-bold text-foreground mb-4">
+                {t('Servicios Relacionados', 'Related Services')}
               </h2>
-              <p className="text-xl text-gray-600">
-                Explore otros servicios que complementan su experiencia
+              <p className="text-xl text-muted-foreground">
+                {t('Explore otros servicios que complementan su experiencia', 'Explore other services that complement your experience')}
               </p>
             </div>
 
@@ -404,20 +482,22 @@ export default function ServicePage({ slug }: ServicePageProps) {
                 .map(([key, relatedService]) => {
                   const RelatedIcon = relatedService.icon
                   return (
-                    <Link key={key} href={`/servicios/${key}`} className="card group hover:shadow-lg transition-shadow">
-                      <div className="card-body">
-                        <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform ${relatedService.color} bg-opacity-10`}>
-                          <RelatedIcon className={`h-6 w-6 ${relatedService.color.replace('bg-', 'text-')}`} />
-                        </div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">
-                          {relatedService.title}
-                        </h3>
-                        <p className="text-gray-600 text-sm mb-4">
-                          {relatedService.subtitle}
-                        </p>
-                        <div className="text-primary-600 font-medium inline-flex items-center">
-                          Ver más →
-                        </div>
+                    <Link
+                      key={key}
+                      href={`/servicios/${key}`}
+                      className="group p-6 bg-card rounded-xl border border-card-border hover:shadow-lg transition-all hover:-translate-y-1"
+                    >
+                      <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <RelatedIcon className="w-6 h-6 text-primary" />
+                      </div>
+                      <h3 className="text-lg font-semibold text-card-foreground mb-2 group-hover:text-primary transition-colors">
+                        {t(relatedService.titleEs, relatedService.titleEn)}
+                      </h3>
+                      <p className="text-muted-foreground text-sm mb-4">
+                        {t(relatedService.subtitleEs, relatedService.subtitleEn)}
+                      </p>
+                      <div className="text-primary font-medium inline-flex items-center">
+                        {t('Ver más', 'Learn more')} →
                       </div>
                     </Link>
                   )
@@ -427,74 +507,43 @@ export default function ServicePage({ slug }: ServicePageProps) {
         </section>
 
         {/* CTA Section */}
-        <section className={`${service.color} text-white section-padding`}>
-          <div className="container-max text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              ¿Listo para comenzar?
+        <section className="bg-gradient-to-br from-primary/10 via-background to-primary/5 py-20">
+          <div className="max-w-4xl mx-auto px-6 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              {t('¿Listo para comenzar?', 'Ready to get started?')}
             </h2>
-            <p className="text-xl text-white text-opacity-90 mb-8 max-w-2xl mx-auto">
-              Contacte con nuestros especialistas para una consulta personalizada sobre {service.title.toLowerCase()}
+            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+              {t(
+                'Contacte con nuestros especialistas para una consulta personalizada',
+                'Contact our specialists for a personalized consultation'
+              )}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/contacto"
-                className="btn-primary bg-white text-gray-800 hover:bg-gray-50 inline-flex items-center justify-center"
-              >
-                <PhoneIcon className="h-5 w-5 mr-2" />
-                Contactar Especialista
-              </Link>
-              <Link
-                href="/para-pacientes"
-                className="btn-secondary border-white text-white hover:bg-white hover:bg-opacity-10 inline-flex items-center justify-center"
-              >
-                Ver para Pacientes
-                <ArrowRightIcon className="ml-2 h-5 w-5" />
-              </Link>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button size="lg" asChild>
+                <Link href="/contacto">
+                  <Phone className="w-5 h-5 mr-2" />
+                  {t('Contactar Especialista', 'Contact Specialist')}
+                </Link>
+              </Button>
+              <Button size="lg" variant="outline" asChild>
+                <Link href="/pacientes/informacion">
+                  {t('Información para Pacientes', 'Patient Information')}
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Link>
+              </Button>
             </div>
           </div>
         </section>
-
-        {/* Footer */}
-        <footer className="bg-gray-900 text-white section-padding">
-          <div className="container-max">
-            <div className="text-center">
-              <div className="mb-8">
-                <div className="w-16 h-16 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white font-bold">LOGO</span>
-                </div>
-                <h3 className="text-2xl font-bold mb-2">{t('site.title')}</h3>
-                <p className="text-gray-400">
-                  {t('site.footer_tagline')}
-                </p>
-              </div>
-              
-              <div className="border-t border-gray-800 pt-8">
-                <p className="text-gray-400">
-                  © 2025 {t('site.title')}. {locale === 'es' ? 'Todos los derechos reservados.' : 'All rights reserved.'}
-                </p>
-              </div>
-            </div>
-          </div>
-        </footer>
       </div>
     </>
   )
 }
 
-export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
+export const getStaticPaths: GetStaticPaths = async () => {
   const slugs = Object.keys(serviceData)
-  const paths: any[] = []
-
-  if (locales) {
-    locales.forEach((locale) => {
-      slugs.forEach((slug) => {
-        paths.push({
-          params: { slug },
-          locale
-        })
-      })
-    })
-  }
+  const paths = slugs.map((slug) => ({
+    params: { slug }
+  }))
 
   return {
     paths,
@@ -502,7 +551,7 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
   }
 }
 
-export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const slug = params?.slug as string
 
   if (!serviceData[slug as keyof typeof serviceData]) {
@@ -513,8 +562,7 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
 
   return {
     props: {
-      slug,
-      ...(await serverSideTranslations(locale ?? 'es', ['common'])),
-    },
+      slug
+    }
   }
 }
