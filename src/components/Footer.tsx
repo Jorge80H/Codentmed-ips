@@ -32,14 +32,14 @@ export default function Footer() {
               <div>
                 <div className="font-bold text-lg text-foreground">CODENTMED IPS</div>
                 <div className="text-xs text-muted-foreground">
-                  {t('Investigación Clínica', 'Clinical Research')}
+                  {t('Atención integral con visión científica', 'Comprehensive care with scientific vision')}
                 </div>
               </div>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
               {t(
-                'Líderes en investigación clínica con estándares internacionales GCP.',
-                'Leaders in clinical research with international GCP standards.'
+                'Centro integrado de medicina, odontología e investigación clínica comprometido con la excelencia.',
+                'Integrated center for medicine, dentistry and clinical research committed to excellence.'
               )}
             </p>
             <div className="flex gap-2">
@@ -95,15 +95,18 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex gap-3 text-sm text-muted-foreground">
                 <MapPin className="w-5 h-5 flex-shrink-0 text-primary" />
-                <span>Bogotá, Colombia</span>
+                <span>Cra 7 Bis # 124-56/64 Consultorio 609, Vitale Centro Médico, Bogotá</span>
               </li>
               <li className="flex gap-3 text-sm text-muted-foreground">
                 <Phone className="w-5 h-5 flex-shrink-0 text-primary" />
-                <span>+57 (1) 234 5678</span>
+                <div className="flex flex-col">
+                  <span>+57 1-7397010 Ext. 2609</span>
+                  <span>+57-3233885341</span>
+                </div>
               </li>
               <li className="flex gap-3 text-sm text-muted-foreground">
                 <Mail className="w-5 h-5 flex-shrink-0 text-primary" />
-                <span>info@codentmed.com</span>
+                <span>codentmed@gmail.com</span>
               </li>
             </ul>
           </div>

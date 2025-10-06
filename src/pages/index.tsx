@@ -12,41 +12,59 @@ export default function Home() {
 
   const services = [
     {
-      icon: Microscope,
-      titleEs: 'Para Patrocinadores',
-      titleEn: 'For Sponsors',
-      descEs: 'Soluciones integrales para investigación clínica con cumplimiento de estándares GCP internacionales.',
-      descEn: 'Comprehensive solutions for clinical research with compliance to international GCP standards.',
-      ctaEs: 'Explorar servicios',
-      ctaEn: 'Explore services',
-    },
-    {
-      icon: Users,
-      titleEs: 'Investigación Clínica',
-      titleEn: 'Clinical Research',
-      descEs: 'Estudios clínicos Fase I-IV con la más alta calidad científica y rigor metodológico.',
-      descEn: 'Phase I-IV clinical studies with the highest scientific quality and methodological rigor.',
-      ctaEs: 'Ver estudios',
-      ctaEn: 'View studies',
-    },
-    {
-      icon: FileText,
-      titleEs: 'Asuntos Regulatorios',
-      titleEn: 'Regulatory Affairs',
-      descEs: 'Apoyo experto en trámites regulatorios ante INVIMA, FDA y agencias internacionales.',
-      descEn: 'Expert support in regulatory procedures with INVIMA, FDA and international agencies.',
+      icon: Heart,
+      titleEs: 'Medicina General y Especializada',
+      titleEn: 'General and Specialized Medicine',
+      descEs: 'Atención médica integral en medicina general, medicina interna, reumatología y seguimiento interdisciplinario.',
+      descEn: 'Comprehensive medical care in general medicine, internal medicine, rheumatology and interdisciplinary follow-up.',
       ctaEs: 'Conocer más',
       ctaEn: 'Learn more',
     },
+    {
+      icon: Activity,
+      titleEs: 'Odontología General y Especializada',
+      titleEn: 'General and Specialized Dentistry',
+      descEs: 'Servicios odontológicos integrales incluyendo periodoncia, rehabilitación oral, ortodoncia y cirugía oral.',
+      descEn: 'Comprehensive dental services including periodontics, oral rehabilitation, orthodontics and oral surgery.',
+      ctaEs: 'Ver servicios',
+      ctaEn: 'View services',
+    },
+    {
+      icon: Microscope,
+      titleEs: 'Investigación Clínica y Documental',
+      titleEn: 'Clinical and Documentary Research',
+      descEs: 'Investigación clínica en medicina y odontología, evaluación de materiales y estudios de evaluación económica.',
+      descEn: 'Clinical research in medicine and dentistry, materials evaluation and economic evaluation studies.',
+      ctaEs: 'Explorar investigación',
+      ctaEn: 'Explore research',
+    },
+    {
+      icon: Brain,
+      titleEs: 'Educación Médica y Odontológica',
+      titleEn: 'Medical and Dental Education',
+      descEs: 'Cursos, talleres, formación en investigación y programas de actualización profesional.',
+      descEn: 'Courses, workshops, research training and professional development programs.',
+      ctaEs: 'Ver programas',
+      ctaEn: 'View programs',
+    },
+    {
+      icon: FileText,
+      titleEs: 'Asesorías Institucionales',
+      titleEn: 'Institutional Advisory',
+      descEs: 'Asesoría especializada para instituciones públicas, privadas y profesionales independientes.',
+      descEn: 'Specialized advisory for public, private institutions and independent professionals.',
+      ctaEs: 'Solicitar asesoría',
+      ctaEn: 'Request advisory',
+    },
   ];
 
-  const therapeuticAreas = [
-    { icon: Heart, labelEs: 'Cardiología', labelEn: 'Cardiology' },
-    { icon: Brain, labelEs: 'Neurología', labelEn: 'Neurology' },
-    { icon: Wind, labelEs: 'Oncología', labelEn: 'Oncology' },
-    { icon: Activity, labelEs: 'Diabetes', labelEn: 'Diabetes' },
-    { icon: Bone, labelEs: 'Reumatología', labelEn: 'Rheumatology' },
-    { icon: Dna, labelEs: 'Genética', labelEn: 'Genetics' },
+  const coreValues = [
+    { icon: Heart, labelEs: 'Ética', labelEn: 'Ethics' },
+    { icon: Activity, labelEs: 'Calidad', labelEn: 'Quality' },
+    { icon: Users, labelEs: 'Humanismo', labelEn: 'Humanism' },
+    { icon: FileText, labelEs: 'Responsabilidad', labelEn: 'Responsibility' },
+    { icon: Brain, labelEs: 'Innovación', labelEn: 'Innovation' },
+    { icon: Dna, labelEs: 'Confidencialidad', labelEn: 'Confidentiality' },
   ];
 
   const blogPosts = [
@@ -106,13 +124,13 @@ export default function Home() {
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               {t(
-                'Ofrecemos soluciones integrales en investigación clínica con los más altos estándares internacionales',
-                'We offer comprehensive clinical research solutions with the highest international standards'
+                'Cinco líneas de servicio integradas para atención médica, odontológica, investigación y educación de excelencia',
+                'Five integrated service lines for medical, dental care, research and educational excellence'
               )}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
             {services.map((service, index) => (
               <ServiceCard
                 key={index}
@@ -134,27 +152,27 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16 space-y-4">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
-              {t('Áreas Terapéuticas', 'Therapeutic Areas')}
+              {t('Nuestros Valores', 'Our Values')}
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               {t(
-                'Experiencia en múltiples especialidades médicas',
-                'Experience in multiple medical specialties'
+                'Valores corporativos que guían nuestro compromiso con la excelencia',
+                'Corporate values that guide our commitment to excellence'
               )}
             </p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {therapeuticAreas.map((area, index) => (
+            {coreValues.map((value, index) => (
               <div
                 key={index}
                 className="p-6 bg-card rounded-xl text-center space-y-3 hover:-translate-y-1 transition-transform border border-card-border"
               >
                 <div className="w-12 h-12 mx-auto bg-primary/10 rounded-xl flex items-center justify-center">
-                  <area.icon className="w-6 h-6 text-primary" />
+                  <value.icon className="w-6 h-6 text-primary" />
                 </div>
                 <div className="text-sm font-medium text-card-foreground">
-                  {t(area.labelEs, area.labelEn)}
+                  {t(value.labelEs, value.labelEn)}
                 </div>
               </div>
             ))}
