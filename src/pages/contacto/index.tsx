@@ -92,9 +92,9 @@ export default function ContactoPage() {
 
       <div className="min-h-screen bg-background">
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-primary/10 via-background to-primary/5 py-20 md:py-32">
+        <section className="relative bg-gradient-to-br from-primary/10 via-background to-primary/5 pt-24 pb-16 md:pt-32 md:pb-20">
           <div className="container-max">
-            <div className="max-w-4xl mx-auto text-center">
+            <div className="max-w-3xl mx-auto text-center">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
                 <Mail className="w-5 h-5 text-primary" />
                 <span className="text-sm font-medium text-primary">
@@ -102,11 +102,11 @@ export default function ContactoPage() {
                 </span>
               </div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
                 {t('Contáctenos', 'Contact Us')}
               </h1>
 
-              <p className="text-xl text-muted-foreground mb-8">
+              <p className="text-lg md:text-xl text-muted-foreground">
                 {t(
                   'Nuestro equipo está disponible para responder sus preguntas sobre estudios clínicos, consulta médica privada, servicios de investigación y cualquier otra inquietud.',
                   'Our team is available to answer your questions about clinical studies, private medical consultations, research services and any other concerns.'
