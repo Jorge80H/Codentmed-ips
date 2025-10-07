@@ -53,7 +53,7 @@ export default function Header() {
       href: '/pacientes',
       children: [
         { label: t('Canal para Pacientes', 'Patient Portal'), href: '/pacientes/canal' },
-        { label: t('Derechos y Deberes', 'Rights & Duties'), href: '/pacientes/derechos' },
+        { label: t('Derechos y Deberes', 'Rights & Duties'), href: '/pacientes/derechos-deberes' },
         { label: t('Recomendaciones', 'Recommendations'), href: '/pacientes/recomendaciones' },
         { label: t('Información al Usuario', 'User Information'), href: '/pacientes/informacion' },
       ]

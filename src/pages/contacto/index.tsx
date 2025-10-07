@@ -135,7 +135,8 @@ export default function ContactoPage() {
                           {t('Ubicación', 'Location')}
                         </h4>
                         <p className="text-muted-foreground text-sm">
-                          Carrera 13 # 88-65<br />
+                          Cra 7 Bis # 124-56/64 Consultorio 609<br />
+                          Vitale Centro Médico<br />
                           Bogotá, Colombia
                         </p>
                       </div>
@@ -148,8 +149,8 @@ export default function ContactoPage() {
                           {t('Teléfono', 'Phone')}
                         </h4>
                         <p className="text-muted-foreground text-sm">
-                          +57 (1) 623-0701<br />
-                          +57 310 123-4567 (WhatsApp)
+                          +57 1-7397010 Ext. 2609<br />
+                          +57-3233885341
                         </p>
                       </div>
                     </div>
@@ -159,8 +160,7 @@ export default function ContactoPage() {
                       <div>
                         <h4 className="font-semibold text-foreground mb-1">Email</h4>
                         <p className="text-muted-foreground text-sm">
-                          info@codentmedips.com<br />
-                          estudios@codentmedips.com
+                          codentmed@gmail.com
                         </p>
                       </div>
                     </div>

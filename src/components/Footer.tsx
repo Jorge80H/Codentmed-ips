@@ -16,7 +16,7 @@ export default function Footer() {
   const patientLinks = [
     { label: t('Información para Pacientes', 'Patient Information'), href: '/pacientes/informacion' },
     { label: t('Estudios Activos', 'Active Studies'), href: '/investigacion/estudios-activos' },
-    { label: t('Derechos y Deberes', 'Rights & Duties'), href: '/pacientes/derechos' },
+    { label: t('Derechos y Deberes', 'Rights & Duties'), href: '/pacientes/derechos-deberes' },
     { label: t('Contacto', 'Contact'), href: '/contacto' },
   ];
 
