@@ -1,5 +1,6 @@
 import { useLanguage } from '@/contexts/LanguageContext'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Facebook, Instagram, Linkedin, Twitter, Mail, Phone, MapPin } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 
@@ -26,8 +27,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-primary rounded-md flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xl">C</span>
+              <div className="relative w-12 h-12">
+                <Image
+                  src="/images/logos/codentmed-logo.png"
+                  alt="CODENTMED IPS"
+                  fill
+                  className="object-contain"
+                />
               </div>
               <div>
                 <div className="font-bold text-lg text-foreground">CODENTMED IPS</div>

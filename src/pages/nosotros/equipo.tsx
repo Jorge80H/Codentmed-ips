@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
@@ -30,7 +31,8 @@ export default function EquipoPage() {
       specialtyEn: 'Internal Medicine and Rheumatology',
       descriptionEs: 'Médico internista y reumatólogo con más de 15 años de experiencia en atención médica especializada e investigación clínica. Experto en el manejo de enfermedades reumáticas y autoinmunes, con formación en investigación clínica y experiencia en terapias biológicas avanzadas.',
       descriptionEn: 'Internal medicine physician and rheumatologist with over 15 years of experience in specialized medical care and clinical research. Expert in managing rheumatic and autoimmune diseases, with training in clinical research and experience with advanced biological therapies.',
-      website: 'https://drwilsonbautista.com'
+      website: 'https://drwilsonbautista.com',
+      image: '/images/team/DrWilsonBautistafotoperfil.jpg'
     },
     {
       name: 'Dra. Sonia Unriza',
@@ -39,7 +41,8 @@ export default function EquipoPage() {
       specialtyEs: 'Odontología y Gestión Clínica',
       specialtyEn: 'Dentistry and Clinical Management',
       descriptionEs: 'Odontóloga especializada en gestión de proyectos de salud con amplia experiencia en coordinación de servicios médicos y odontológicos. Lidera la estrategia institucional y el desarrollo de programas de atención integral.',
-      descriptionEn: 'Dentist specialized in health project management with extensive experience in coordinating medical and dental services. Leads institutional strategy and development of comprehensive care programs.'
+      descriptionEn: 'Dentist specialized in health project management with extensive experience in coordinating medical and dental services. Leads institutional strategy and development of comprehensive care programs.',
+      image: '/images/team/DraSoniaUnrizaConferencia1.jpg'
     }
   ]
 
@@ -168,14 +171,24 @@ export default function EquipoPage() {
             <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
               {teamMembers.map((member, index) => (
                 <Card key={index} className="overflow-hidden border-card-border hover:shadow-lg transition-shadow">
-                  <div className="aspect-square bg-gradient-to-br from-primary/5 to-primary/10 flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="w-32 h-32 bg-primary/20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                        <span className="text-5xl font-bold text-primary">
-                          {member.name.split(' ').map(n => n[0]).join('')}
-                        </span>
+                  <div className="relative aspect-square bg-gradient-to-br from-primary/5 to-primary/10">
+                    {member.image ? (
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <div className="w-32 h-32 bg-primary/20 rounded-full flex items-center justify-center">
+                          <span className="text-5xl font-bold text-primary">
+                            {member.name.split(' ').map(n => n[0]).join('')}
+                          </span>
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </div>
                   <div className="p-6">
                     <h3 className="text-2xl font-bold text-card-foreground mb-1">{member.name}</h3>

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useTheme } from '@/contexts/ThemeContext'
@@ -74,8 +75,14 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border h-20">
       <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3 hover-elevate rounded-md px-3 py-2">
-          <div className="w-12 h-12 bg-primary rounded-md flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-xl">C</span>
+          <div className="relative w-12 h-12">
+            <Image
+              src="/images/logos/codentmed-logo.png"
+              alt="CODENTMED IPS"
+              fill
+              className="object-contain"
+              priority
+            />
           </div>
           <div className="hidden md:block">
             <div className="font-bold text-lg text-foreground">CODENTMED IPS</div>
