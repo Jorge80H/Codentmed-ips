@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useTheme } from '@/contexts/ThemeContext'
 import { Button } from '@/components/ui/Button'
+import AgendarCitaModal from '@/components/AgendarCitaModal'
 import { Globe, Menu, X, ChevronDown, Moon, Sun } from 'lucide-react'
 import {
   DropdownMenu,
@@ -21,6 +22,7 @@ export default function Header() {
   const { theme, toggleTheme } = useTheme()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
+  const [showAgendarModal, setShowAgendarModal] = useState(false)
 
   const menuItems = [
     { 
@@ -144,7 +146,7 @@ export default function Header() {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <Button className="hidden md:flex" onClick={() => router.push('/agendar')}>
+          <Button className="hidden md:flex" onClick={() => setShowAgendarModal(true)}>
             {t('Agenda tu Cita', 'Schedule Appointment')}
           </Button>
 
@@ -188,12 +190,18 @@ export default function Header() {
                 )}
               </div>
             ))}
-            <Button className="w-full" onClick={() => { router.push('/agendar'); setMobileMenuOpen(false); }}>
+            <Button className="w-full" onClick={() => { setShowAgendarModal(true); setMobileMenuOpen(false); }}>
               {t('Agenda tu Cita', 'Schedule Appointment')}
             </Button>
           </div>
         </div>
       )}
+
+      {/* Modal de Agendar Cita */}
+      <AgendarCitaModal
+        isOpen={showAgendarModal}
+        onClose={() => setShowAgendarModal(false)}
+      />
     </header>
   )
 }
